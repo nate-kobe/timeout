@@ -9,7 +9,7 @@
       <table class="her-table">
         <tbody><tr *ngFor="let scout of scoutsCol">
           <td><a [routerLink]="['/profile/' + scout._id]" class="her-btn her-btn-link">{{scout.firstName}} {{scout.lastName}}</a></td>
-          <td>{{scout.hours}} - {{scout.minutes}} - {{scout.seconds}}</td>
+          <td>{{scout.time.hours}} - {{scout.time.minutes}} - {{scout.time.seconds}}</td>
         </tr></tbody>
       </table>
     </div>

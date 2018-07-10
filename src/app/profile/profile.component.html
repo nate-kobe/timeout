@@ -11,7 +11,7 @@
             <div style="background: #F04E22; text-align: center; padding: 8px 5px; color: white; font-weight: bold; font-size: 16px;">ID {{ scout.uid }}/{{ scout.firstName[0] + scout.lastName[0] }}-{{ scout.troop }}B</div>
         </div>
         <div class="her-qrcode">
-          <img src="{{ qr }}"/>
+          <img src="{{ qr.url }}"/>
         </div>
 
       </div>
@@ -29,8 +29,11 @@
               <tr><td>GRADE</td><td>{{scout.grade || "---"}}</td></tr>
             </table>
           </div>
-          <div class="col-md-6" style="background: red">
-            {{ scout.time.hours }} - {{ scout.time.minutes }} - {{ scout.time.seconds }}
+          <div class="col-md-4 offset-md-2">
+            <h2><table>
+              <tr><td>{{ scout.time.hours }}</td><td>h</td></tr>
+              <tr><td>{{ scout.time.minutes }}</td><td>min</td></tr>
+              <tr><td>{{ scout.time.seconds }}</td><td>s</td></tr></table></h2>
           </div>
         </div>
           <br/>

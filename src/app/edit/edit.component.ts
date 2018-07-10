@@ -12,14 +12,14 @@ import { ScoutService } from '../_services/index';
 export class EditComponent implements OnInit {
   form: any = {};
   scoutId: string;
-  loaded: false;
+  loaded: boolean = false;
   transaction: any = {isPositive: true};
 
   constructor(
     private scoutService: ScoutService, 
     private route: ActivatedRoute
   ) {
-    route.params.subscribe((params: Params) => this.scoutId = params._id);
+    route.params.subscribe(params => this.scoutId = params._id);
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class EditComponent implements OnInit {
   }
 
   editScout() {
-    this.scoutService.update(this.form._id, this.form).subscribe(console.log('update ok'));
+    this.scoutService.update(this.form._id, this.form);
   }
 
   loadScout() {

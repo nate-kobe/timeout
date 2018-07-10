@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
  
 import { appConfig } from '../app.config';
-import { Scout } from '../_models/index';
+import { Scout, Transaction } from '../_models/index';
  
 @Injectable()
 export class ScoutService {
@@ -36,8 +36,8 @@ export class ScoutService {
       return this.http.delete(appConfig.apiUrl + '/scout/' + _id + '/transaction/' + trId + '/delete');
     }
 
-    getQR(_id: string) {
-      return this.http.get(appConfig.apiUrl + '/scout/' + _id + '/qrcode');
+    getQR(uid: string) {
+      return this.http.get(appConfig.apiUrl + '/scout/' + uid + '/qrcode');
     }
 
     listQR() {

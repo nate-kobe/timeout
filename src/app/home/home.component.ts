@@ -13,14 +13,14 @@ export class HomeComponent implements OnInit {
 
     currentUser: User;
     users: User[] = [];
-    scouts: Scout[] = [];
-    n: any = 0;
+    scouts: Scout[][] = [];
+    n: number = 0;
     now: any;
  
     constructor(private userService: UserService, private scoutService: ScoutService) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      const init = new Date(2018, 6, 8);
-      const now = new Date();
+      const init = new Date(2018, 6, 8).getTime();
+      const now = new Date().getTime();
       console.log(now - init);
       this.n = Math.floor((now - init)/1000);
       setTimeout(() => {
@@ -49,17 +49,18 @@ export class HomeComponent implements OnInit {
       this.scoutService.list().subscribe(result => {
         const scouts = result.map(s => {
           let scoutWTime = s;
+          scoutWTime.time = {};
           if(s.transactions.length > 0) {
-            scoutWTime.time = s.transactions.map(a => {
+            scoutWTime.time = {count: s.transactions.map(a => {
               if(a.isPositive)
                 return a.time;
               else
                 return 0 - a.time;
-            }).reduce((a, b) => a + b, 0);
+            }).reduce((a, b) => a + b, 0)};
             console.log(scoutWTime);
           }
-          else scoutWTime.time = 0;
-          scoutWTime.time += Math.floor(Math.random() * 100000) + 1000000;
+          else scoutWTime.time.count = 0;
+          scoutWTime.time.count += Math.floor(Math.random() * 100000) + 1000000;
           return scoutWTime;
         }).sort((a,b) => {return a.lastName > b.lastName ? 1 : -1;});
 
@@ -96,10 +97,10 @@ export class HomeComponent implements OnInit {
       for(let i = 0; i < 3; i++) {
         this.scouts[i] = this.scouts[i].map(scout => {
           let scoutUpdate: Scout = scout;
-          const showTime = Math.max(0, scoutUpdate.time - this.n);
-          scoutUpdate.minutes = ('0' + Math.round(showTime / 60) % 60).slice(-2);
-          scoutUpdate.hours = ('0' + Math.round(showTime / 3600) % 24).slice(-2);
-          scoutUpdate.seconds = ('0' + showTime % 60).slice(-2);
+          const showTime = Math.max(0, scoutUpdate.time.count - this.n);
+          scoutUpdate.time.minutes = ('0' + Math.round(showTime / 60) % 60).slice(-2);
+          scoutUpdate.time.hours = ('0' + Math.round(showTime / 3600) % 24).slice(-2);
+          scoutUpdate.time.seconds = ('0' + showTime % 60).slice(-2);
           return scoutUpdate;
         });
       }

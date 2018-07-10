@@ -10,7 +10,7 @@ import { ScoutService } from '../_services/index';
 })
  
 export class QRComponent implements OnInit { 
-    codes = [];
+    codes: any;
 
     constructor(
       private scoutService: ScoutService
