@@ -27,7 +27,7 @@ export class EditComponent implements OnInit {
   }
 
   editScout() {
-    this.scoutService.update(this.form._id, this.form).subscribe(result => this.scout = result);
+    this.scoutService.update(this.form._id, this.form).subscribe(result => this.form = result);
   }
 
   loadScout() {
