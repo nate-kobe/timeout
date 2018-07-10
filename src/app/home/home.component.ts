@@ -44,7 +44,6 @@ export class HomeComponent implements OnInit {
     }
 
     private loadAllScouts() {
-      // this.userService.getAll().subscribe(console.log('coucou'));
       const reducer = (a,b) => a.time + b.time;
       this.scoutService.list().subscribe(result => {
         const scouts = result.map(s => {
@@ -62,7 +61,7 @@ export class HomeComponent implements OnInit {
           else scoutWTime.time.count = 0;
           scoutWTime.time.count += Math.floor(Math.random() * 100000) + 1000000;
           return scoutWTime;
-        }).sort((a,b) => {return a.lastName > b.lastName ? 1 : -1;});
+        }).sort((a,b) => {return a.firstName > b.firstName ? 1 : -1;});
 
         let size = 0;
         const len = scouts.length;
