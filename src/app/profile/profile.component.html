@@ -1,0 +1,53 @@
+<div *ngIf="loading">
+  <div class="her-panel">
+    <div class="her-panel-title">
+      <span>PROFILE</span>
+      <span class="float-right"><a [routerLink]="['/edit/' + scout._id]" class="her-btn her-btn-link">edit</a></span>
+    </div>
+    <div class="her-panel-body"><div class="row">
+      <div class="col-md-4"> 
+        <div style="max-width: 200px; margin: auto; padding: 0px; text-align: center; border: 1px solid #105969">
+            <img src="https://www.expungecenter.com/wp-content/uploads/2013/09/mugshots-philadelphia.jpg" style="width: 180px; padding: 10px; max-width: 100%;"/>
+            <div style="background: #F04E22; text-align: center; padding: 8px 5px; color: white; font-weight: bold; font-size: 16px;">ID {{ scout.uid }}/{{ scout.firstName[0] + scout.lastName[0] }}-{{ scout.troop }}B</div>
+        </div>
+        <div class="her-qrcode">
+          <img src="{{ qr }}"/>
+        </div>
+
+      </div>
+      <div class="col-md-8">
+        <h5 style="margin-top: 20px">HERENS - FICHE PERSONNEL</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <div style="color: rgb(136, 136, 136)"><div>{{scout.lastName | uppercase }}, {{scout.firstName | uppercase}}</div>
+            <div>FLAMBEAUX, NYON</div></div>
+            <br/>
+            <table>
+              <tr><td style="min-width: 100px">PAYS</td><td>SUISSE</td></tr>
+              <tr><td>DOB</td><td>{{scout.birthday | date: 'dd/MM/yyyy'}}</td></tr>
+              <tr><td>AFFILIATION</td><td>{{scout.patrol || "---"}}, {{scout.troop}}B</td>
+              <tr><td>GRADE</td><td>{{scout.grade || "---"}}</td></tr>
+            </table>
+          </div>
+          <div class="col-md-6" style="background: red">
+            {{ scout.time.hours }} - {{ scout.time.minutes }} - {{ scout.time.seconds }}
+          </div>
+        </div>
+          <br/>
+          <div class="her-divider">TEMPS</div>
+          <div class="her-panel">
+            <div class="her-panel-title">
+            </div> 
+            <div class="her-panel-body">
+              <table class="her-table">
+                <tr><th>Date</th><th>Temps</th><th>Explication</th></tr>
+                <tr *ngFor="let tr of scout.transactions">
+                  <td>[{{tr.createdAt}}]</td><td>{{ tr.time }}</td><td>{{ tr.reason }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div></div><br/>
+</div>

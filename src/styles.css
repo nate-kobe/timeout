@@ -1,1 +1,190 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
+body {
+  font: 14px 'Dosis', Helvetica, Arial, sans-serif !important;
+  background-color: black !important;
+  height: 100%;
+}
+
+.her-qrcode {
+  margin: 20px 0;  
+  text-align: center;
+}
+.her-qrcode > img {
+  border: 5px solid #105969;
+}
+
+.image-container {
+    position: relative;
+    width: 200px;
+    height: 300px;
+}
+.image-container .after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    color: #FFF;
+}
+.image-container:hover .after {
+    display: block;
+    background: rgba(0, 0, 0, .6);
+}
+
+.her-footer {
+  position: absolute;
+  bottom: 5px;
+  width: 80%;
+}
+/* Panel component */
+.her-panel {
+    border: 1px solid #105969;
+    padding: 3px;
+    color: #e8f7fa;
+    background: black;
+    opacity : 0.8;
+}
+
+.her-panel-title {
+    border: 1px solid #105969;
+    background: #09353f;
+    color: #e8f7fa;
+    padding: 5px 10px;
+    margin-bottom: 2px;
+    font-size: .8em;
+    text-transform: uppercase;
+}
+
+.her-panel-body {
+    border: 1px solid #105969;
+    padding: 15px;
+}
+
+
+/* Table component */
+table.her-table {
+    width: 90%;
+    margin: auto;
+}
+
+table.her-table tr {
+    border-bottom: 1px solid grey;
+    margin: 5px 10px;
+}
+
+table.her-table td, th {
+    padding:.5em 1em;
+}
+
+/* Form component */
+.her-form input[type=text],
+.her-form input[type=date],
+.her-form input[type=tel],
+.her-form input[type=password],
+.her-form textarea,
+.her-form,
+.her-form input[type=number] {
+    background: transparent;
+    border: none;
+    width: 100%;
+    outline: none;
+    padding: 3px 5px;
+    color: #fff;
+    border-bottom: 2px solid #105969;
+    font-size: 16px;
+}
+.her-form input[type=text]:focus, .her-form {
+    border-bottom: 3px solid #105969;
+}
+
+/* Divider component */
+.her-divider {
+    width: 100%;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    font-family: 'Dosis', sans-serif;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 15px 5px;
+}
+.her-divider:before, .her-divider:after {
+    content: '  | | |  ';
+    color: #F04E22;
+}
+
+.her-btn {
+    background: #09353f;
+    border: 1px solid #105969;
+    color: #e8f7fa;
+    padding: 5px 10px;
+    font-size: 1em;
+}
+.her-btn:hover {
+  cursor:pointer;
+  border: 1px solid black;
+}
+.her-btn.her-btn-link {
+  background: none;
+  border: none;
+}
+.her-btn.her-btn-link:hover {
+  color: #105969;
+}
+
+/* Loader component */
+.her-loader { 
+    border: 1px solid #105969;
+    background: #09353f;
+    color: #e8f7fa;
+    padding: 25px;
+    margin: 10px;
+    font-size: 2em;
+    text-transform: uppercase;
+}
+
+a {
+  color: #105969 ;
+}
+
+/* Bootstrap overwrites */
+.alert {
+  border-radius: 0 !important;
+  color: #e8f7fa !important;
+}
+
+.alert.alert-danger {
+  background: #EA2027 !important;
+  border: #ED4C67 !important;
+}
+.alert.alert-success {
+  background: #009432 !important;
+  border: #006266 !important;
+}
+
+
+
+#background {
+  position: relative;
+  padding: 50px;
+
+}
+#background:after {
+  content : "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("http://www.wallpaperbetter.com/wallpaper/879/796/946/dna-adn-black-background-1080P-wallpaper.jpg"); 
+  width: 100%;
+  height: 100%;
+  opacity : 1;
+  z-index: -1;
+  background-attachment:fixed;
+}
+
+.other {
+  background-image: url("http://attachments.gfan.com/forum/attachments2/201301/16/105426hdjeee8aeuhedehe.jpg"); 
+  background-size: cover;
+}

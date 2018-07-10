@@ -1,0 +1,6 @@
+<h1>QR Page</h1>
+<div class="qr-page">
+  <div *ngFor="let qr of codes" class="qr-container">
+    <img src="{{ qr.qrcode }}"/> <h2>{{ qr.herensId }}</h2>
+  </div>
+</div>

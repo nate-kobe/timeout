@@ -1,0 +1,28 @@
+@page {
+  size: A4 landscape; /*21cm 29.7cm landscape;*/
+  margin: 10mm 25mm 10mm 25mm; /* change the margins as you want them to be. */
+}
+
+h2 {
+  font-size: 1.1em;
+  display: inline;
+  margin-left: 5px;
+  color: black;
+}
+
+.qr-page {
+  width: 16cm;
+}
+
+.qr-container {
+  height: 18mm;
+  width: 50mm;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  background: white;
+  display: inline-block;
+}
+
+.qr-container > img {
+  height: 100%;
+}

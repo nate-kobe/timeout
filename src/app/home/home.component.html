@@ -1,0 +1,43 @@
+<div class="her-panel">
+  <div class="her-panel-title">
+    <span>EXPERIMENT #0004</span>
+    <span>{{n}}</span>
+    <span class="float-right">46°04'52.2"N 7°30'22.3"E</span>
+  </div>
+  <div class="her-panel-body row">
+    <div class="col-md-4" *ngFor="let scoutsCol of scouts">
+      <table class="her-table">
+        <tbody><tr *ngFor="let scout of scoutsCol">
+          <td><a [routerLink]="['/profile/' + scout._id]" class="her-btn her-btn-link">{{scout.firstName}} {{scout.lastName}}</a></td>
+          <td>{{scout.hours}} - {{scout.minutes}} - {{scout.seconds}}</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+  <div class="her-footer">
+    <div class="row">
+    <div class="col-md-4">46°04'52.2"N 7°30'22.3"E</div>
+    <div class="col-md-4">{{now}}</div>
+  </div>
+</div>
+
+<!-- <div class="col-md-6 col-md-offset-3">
+    <h1>Hi {{currentUser.firstName}}!</h1>
+    <p>You're logged in with the MEAN Stack & Angular 2!!</p>
+    <h3>All registered users:</h3>
+    <ul>
+        <li *ngFor="let user of users">
+            {{user.username}} ({{user.firstName}} {{user.lastName}})
+            - <a (click)="deleteUser(user._id)">Delete</a>
+        </li>
+    </ul>
+    <h3>All registered scouts:</h3>
+    <ul>
+        <li *ngFor="let scout of scouts">
+            [{{scout.troop}}B] {{scout.firstName}} {{scout.lastName}}
+        </li>
+    </ul>
+    <p><a [routerLink]="['/login']">Logout</a></p>
+</div>-->

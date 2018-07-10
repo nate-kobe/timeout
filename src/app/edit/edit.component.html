@@ -1,0 +1,39 @@
+<h1>Edit</h1>
+<div class="her-panel">
+  <div class="her-panel-title">
+    <span>ADD TRANSACTION</span>
+  </div>
+  <div class="her-panel-body">
+    <ul>
+      <li *ngFor="let tr of form.transactions">
+        {{ tr.time }} - {{ tr.reason }} <button (click)="deleteTransaction(tr._id)" class="her-btn her-btn-link">[x]</button>
+      </li>
+    </ul>
+    <form name="form" (ngSubmit)="addTransaction()" #f="ngForm" novalidate class="her-form">
+      <div class="form-group">
+        <input type="text" class="form-control" name="reason" [(ngModel)]="transaction.reason" #reason="ngModel" required placeholder="Titre" />
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" name="time" [(ngModel)]="transaction.time" #reason="ngModel" required placeholder="Temps [s]" />
+      </div>
+      <div class="form-group">
+        <label for="isPositive"><input type="checkbox" class="form-control" name="isPositive" [(ngModel)]="transaction.isPositive" ngTrueValue="true" ngFalseValue="false" #reason="ngModel" required /> isPositive </label>
+      </div>
+      <button class="her-btn">Ajouter</button>
+    </form>
+  </div>
+</div>
+<br/>
+<div class="her-panel">
+  <div class="her-panel-title" *ngIf="loaded">
+    <span>Scout {{form.uid}}/{{form.firstName[0] + form.lastName[0]}}-{{form.troop}}B</span>
+  </div>
+  <div class="her-panel-body">
+    <form (ngSubmit)="editScout()" class="her-form">
+      <input type="text" placeholder="ID .../NK-4B" [(ngModel)]="form.uid" name="uid" #uid="ngModel" />
+      <input type="text" placeholder="Grade" [(ngModel)]="form.grade" name="grade" #uid="ngModel" />
+      <input type="text" placeholder="Patrol" [(ngModel)]="form.patrol" name="patrol" #uid="ngModel" />
+      <button class="her-btn">Sauvegarder</button>
+    </form>
+  </div>
+</div>

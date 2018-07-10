@@ -25,7 +25,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/qrcode/build/qrcode.min.js"
+            ]
           },
           "configurations": {
             "production": {
