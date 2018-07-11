@@ -9,7 +9,7 @@ import Timer = NodeJS.Timer;
 
 export class LayoutComponent {
   title = 'HERENS';
-  _to: Time;
+  _to: Timer;
   now: any;
 
   constructor() {

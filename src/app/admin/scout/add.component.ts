@@ -9,7 +9,7 @@ import { ScoutService } from '../../_services/index';
 })
  
 export class AdminScoutAddComponent implements OnInit {
-  form: Scout = {};
+  form: any = {};
 
   constructor(private scoutService: ScoutService) {}
 
@@ -20,6 +20,6 @@ export class AdminScoutAddComponent implements OnInit {
   handleSubmit() {
     console.log('Adding scout: ');
     console.log(this.form);
-    this.scoutService.insert(this.form).subscribe(scout => this.scout = scout);
+    this.scoutService.insert(this.form).subscribe(scout => this.form = scout);
   }
 }

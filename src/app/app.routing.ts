@@ -22,7 +22,7 @@ const appRoutes: Routes = [
     { path: 'admin/user', component: AdminUserComponent, canActivate: [AuthGuard]  },
     { path: 'admin/scout', component: AdminScoutListComponent, canActivate: [AuthGuard]  },
     { path: 'admin/scout/add', component: AdminScoutAddComponent, canActivate: [AuthGuard]  },
-    { path: 'layout', component: LayoutComponent }
+    { path: 'layout', component: LayoutComponent },
  
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
