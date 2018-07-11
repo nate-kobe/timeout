@@ -1,26 +1,20 @@
-<a [routerLink]="['/qrpage']" class="her-btn her-btn-link">QRCodes</a>
 <div class="her-panel">
   <div class="her-panel-title">
     <span>EXPERIMENT #0004</span>
     <span>{{n}}</span>
     <span class="float-right">46°04'52.2"N 7°30'22.3"E</span>
   </div>
-  <div class="her-panel-body row">
-    <div class="col-md-4" *ngFor="let scoutsCol of scouts">
-      <table class="her-table">
-        <tbody><tr *ngFor="let scout of scoutsCol">
-          <td><a [routerLink]="['/profile/' + scout._id]" class="her-btn her-btn-link">{{scout.firstName}} {{scout.lastName}}</a></td>
-          <td>{{scout.time.hours}} - {{scout.time.minutes}} - {{scout.time.seconds}}</td>
-        </tr></tbody>
-      </table>
-    </div>
-  </div>
-</div>
-
-  <div class="her-footer">
+  <div class="her-panel-body">
     <div class="row">
-    <div class="col-md-4">46°04'52.2"N 7°30'22.3"E</div>
-    <div class="col-md-4">{{now}}</div>
+      <div class="col-md-4" *ngFor="let scoutsCol of scouts">
+        <table class="her-table">
+          <tbody><tr *ngFor="let scout of scoutsCol">
+            <td><a [routerLink]="['/profile/' + scout._id]" class="her-btn her-btn-link">{{scout.firstName}} {{scout.lastName}}</a></td>
+            <td>{{scout.time.hours}} - {{scout.time.minutes}} - {{scout.time.seconds}}</td>
+          </tr></tbody>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
 

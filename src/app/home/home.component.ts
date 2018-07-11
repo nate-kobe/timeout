@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
           console.log('not a multiple of 3');
           size = Math.ceil((len - i) / 3);
           for(let i = 0; i < len; i++) {
-            const sub = scouts.slice(i, i += size);
+            const sub = scouts.slice(i, i += size + 1);
             this.scouts.push(sub);
           }
           
@@ -97,8 +97,8 @@ export class HomeComponent implements OnInit {
         this.scouts[i] = this.scouts[i].map(scout => {
           let scoutUpdate: Scout = scout;
           const showTime = Math.max(0, scoutUpdate.time.count - this.n);
-          scoutUpdate.time.minutes = ('0' + Math.round(showTime / 60) % 60).slice(-2);
-          scoutUpdate.time.hours = ('0' + Math.round(showTime / 3600) % 24).slice(-2);
+          scoutUpdate.time.minutes = ('0' + Math.floor(showTime / 60) % 60).slice(-2);
+          scoutUpdate.time.hours = ('0' + Math.floor(showTime / 3600) % 24).slice(-2);
           scoutUpdate.time.seconds = ('0' + showTime % 60).slice(-2);
           return scoutUpdate;
         });
