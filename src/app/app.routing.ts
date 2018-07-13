@@ -10,6 +10,7 @@ import { QRComponent } from './qrpage/index';
 import { LayoutComponent } from './layout/index';
 import { AdminScoutListComponent } from './admin/scout/index';
 import { AdminScoutAddComponent } from './admin/scout/index';
+import { CheckinComponent } from './checkin/index';
 import { AuthGuard } from './_guards/index';
  
 const appRoutes: Routes = [
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
     { path: 'qrpage', component: QRComponent },
     { path: 'admin/user', component: AdminUserComponent, canActivate: [AuthGuard]  },
     { path: 'admin/scout', component: AdminScoutListComponent, canActivate: [AuthGuard]  },
-    { path: 'admin/scout/add', component: AdminScoutAddComponent, canActivate: [AuthGuard]  },
+    { path: 'admin/scout/add', component: AdminScoutAddComponent,canActivate: [AuthGuard]  },
+    { path: 'check/:uid', component: CheckinComponent, canActivate: [AuthGuard] },
     { path: 'layout', component: LayoutComponent },
  
     // otherwise redirect to home

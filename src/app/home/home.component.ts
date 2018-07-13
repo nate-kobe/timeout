@@ -19,10 +19,12 @@ export class HomeComponent implements OnInit {
  
     constructor(private userService: UserService, private scoutService: ScoutService) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-      const init = new Date(2018, 6, 8).getTime();
+      const init = new Date(2018, 6, 14).getTime();
+      console.log(init);
       const now = new Date().getTime();
-      console.log(now - init);
+      console.log(now);
       this.n = Math.floor((now - init)/1000);
+      console.log(this.n);
       setTimeout(() => {
         this.n = this.n + 1;
       }, 10);
@@ -46,23 +48,20 @@ export class HomeComponent implements OnInit {
     private loadAllScouts() {
       const reducer = (a,b) => a.time + b.time;
       this.scoutService.list().subscribe(result => {
-        const scouts = result.map(s => {
+        const scouts = result.filter(function(s){
+          return s.firstName !== undefined && s.firstName.length > 0;
+        }).map(s => {
           let scoutWTime = s;
-          scoutWTime.time = {};
-          if(s.transactions.length > 0) {
-            scoutWTime.time = {count: s.transactions.map(a => {
-              if(a.isPositive)
-                return a.time;
-              else
-                return 0 - a.time;
-            }).reduce((a, b) => a + b, 0)};
-            console.log(scoutWTime);
-          }
-          else scoutWTime.time.count = 0;
-          scoutWTime.time.count += Math.floor(Math.random() * 100000) + 1000000;
+          scoutWTime.time = {count: s.transactions.map(a => {
+            if(a.isPositive)
+              return a.time;
+            else if(!a.isPositive)
+              return 0 - a.time;
+            // return a.time;
+          }).reduce((a, b) => a + b, 0) + 100000};
           return scoutWTime;
-        }).sort((a,b) => {return a.firstName > b.firstName ? 1 : -1;});
-
+        }).sort((a,b) => {return a.firstName > b.firstName ? 1 : -1;})
+        console.log(scouts);
         let size = 0;
         const len = scouts.length;
         this.scouts = [];
@@ -91,7 +90,6 @@ export class HomeComponent implements OnInit {
     }
 
     private updateTime() {
-      this.now = Date();
       this.n++;
       for(let i = 0; i < 3; i++) {
         this.scouts[i] = this.scouts[i].map(scout => {

@@ -4,11 +4,11 @@
     <span>ADD TRANSACTION</span>
   </div>
   <div class="her-panel-body">
-    <ul>
-      <li *ngFor="let tr of form.transactions">
-        {{ tr.time }} - {{ tr.reason }} <button (click)="deleteTransaction(tr._id)" class="her-btn her-btn-link">[x]</button>
-      </li>
-    </ul>
+    <table class="her-table">
+      <tr *ngFor="let tr of form.transactions">
+        <td>{{ tr.createdAt }}</td><td>{{ tr.isPositive ? '+' : '-' }}{{ tr.time }}</td><td>{{ tr.reason }}</td><td><button (click)="deleteTransaction(tr._id)" class="her-btn her-btn-link">[x]</button></td>
+      </tr>
+    </table>
     <form name="form" (ngSubmit)="addTransaction()" #f="ngForm" novalidate class="her-form">
       <div class="form-group">
         <input type="text" class="form-control" name="reason" [(ngModel)]="transaction.reason" #reason="ngModel" required placeholder="Titre" />

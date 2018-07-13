@@ -15,6 +15,10 @@ export class ScoutService {
     detail(_id: string) {
         return this.http.get(appConfig.apiUrl + '/scout/' + _id + '/detail');
     }
+
+    detailByUid(uid: string) {
+      return this.http.get(appConfig.apiUrl + '/scout/uid' + uid + '/checkin');
+    }
  
     insert(scout: Scout) {
         return this.http.post(appConfig.apiUrl + '/scout/insert', scout);

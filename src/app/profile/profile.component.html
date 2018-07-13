@@ -7,7 +7,7 @@
     <div class="her-panel-body"><div class="row">
       <div class="col-md-4"> 
         <div style="max-width: 200px; margin: auto; padding: 0px; text-align: center; border: 1px solid #105969">
-            <img src="https://www.expungecenter.com/wp-content/uploads/2013/09/mugshots-philadelphia.jpg" style="width: 180px; padding: 10px; max-width: 100%;"/>
+            <img src="http://www.stickpng.com/assets/images/585e4beacb11b227491c3399.png" style="width: 180px; padding: 10px; max-width: 100%;"/>
             <div style="background: #F04E22; text-align: center; padding: 8px 5px; color: white; font-weight: bold; font-size: 16px;">ID {{ scout.uid }}/{{ scout.firstName[0] + scout.lastName[0] }}-{{ scout.troop }}B</div>
         </div>
         <div class="her-qrcode">
@@ -31,6 +31,7 @@
           </div>
           <div class="col-md-4 offset-md-2">
             <h2><table>
+              <tr><td>{{ scout.time.day || null }}</td></tr>
               <tr><td>{{ scout.time.hours }}</td><td>h</td></tr>
               <tr><td>{{ scout.time.minutes }}</td><td>min</td></tr>
               <tr><td>{{ scout.time.seconds }}</td><td>s</td></tr></table></h2>
@@ -45,7 +46,7 @@
               <table class="her-table">
                 <tr><th>Date</th><th>Temps</th><th>Explication</th></tr>
                 <tr *ngFor="let tr of scout.transactions">
-                  <td>[{{tr.createdAt}}]</td><td>{{ tr.time }}</td><td>{{ tr.reason }}</td>
+                  <td>[{{tr.createdAt}}]</td><td>{{ tr.isPositive ? '+' : '-' }}{{ tr.time }}</td><td>{{ tr.reason }}</td>
                 </tr>
               </table>
             </div>

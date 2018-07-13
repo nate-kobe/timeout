@@ -18,6 +18,7 @@ import { LoginComponent } from './login/index';
 import { RegisterComponent } from './register/index';
 import { ProfileComponent } from './profile/index';
 import { QRComponent } from './qrpage/index';
+import { CheckinComponent } from './checkin/index';
 
  
 @NgModule({
@@ -38,7 +39,8 @@ import { QRComponent } from './qrpage/index';
         QRComponent,
         LayoutComponent,
         AdminScoutListComponent,
-        AdminScoutAddComponent
+        AdminScoutAddComponent,
+        CheckinComponent
     ],
     providers: [
         AuthGuard,
