@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
     constructor(private userService: UserService, private scoutService: ScoutService) {
       this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
       const init = new Date(2018, 6, 14).getTime();
+      console.log('Profile');
       console.log(init);
       const now = new Date().getTime();
       console.log(now);
@@ -95,6 +96,7 @@ export class HomeComponent implements OnInit {
         this.scouts[i] = this.scouts[i].map(scout => {
           let scoutUpdate: Scout = scout;
           const showTime = Math.max(0, scoutUpdate.time.count - this.n);
+          scoutUpdate.time.days = Math.floor(showTime / 86400)
           scoutUpdate.time.minutes = ('0' + Math.floor(showTime / 60) % 60).slice(-2);
           scoutUpdate.time.hours = ('0' + Math.floor(showTime / 3600) % 24).slice(-2);
           scoutUpdate.time.seconds = ('0' + showTime % 60).slice(-2);

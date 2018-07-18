@@ -24,10 +24,12 @@ export class ProfileComponent implements OnInit {
     ) {
       route.params.subscribe(params => this.scoutId = params._id);
       const init = new Date(2018, 6, 14).getTime();
+      console.log('Profile');
       console.log(init);
       const now = new Date().getTime();
       console.log(now);
       this.n = Math.floor((now - init)/1000);
+      console.log(this.n);
     }
  
     ngOnInit() {
@@ -42,10 +44,11 @@ export class ProfileComponent implements OnInit {
         this.scout.time.count = result.transactions.map(a => {
           if(a.isPositive)
             return a.time;
-          else
+          else if(!a.isPositive)
             return 0 - a.time;
-        }).reduce((a, b) => a + b, 0);
+        }).reduce((a, b) => a + b, 0) + 100000;
         this.loadQR();
+        console.log(this.scout.time);
         this.updateTime();
         console.log(this.scout);
       });
@@ -61,12 +64,9 @@ export class ProfileComponent implements OnInit {
     private updateTime() {
       this.n++;
       const showTime = Math.max(0, this.scout.time.count - this.n);
-      const day = Math.max(Math.round(showTime / 86400));
-      if(day !== 0) 
-        this.scout.time.day = day + ' jour(s)';
-      else this.scout.time.day = '';
-      this.scout.time.minutes = ('0' + Math.round(showTime / 60) % 60).slice(-2);
-      this.scout.time.hours = ('0' + Math.round(showTime / 3600) % 24).slice(-2);
+      this.scout.time.days = Math.floor(showTime / 86400);
+      this.scout.time.minutes = ('0' + Math.floor(showTime / 60) % 60).slice(-2);
+      this.scout.time.hours = ('0' + Math.floor(showTime / 3600) % 24).slice(-2);
       this.scout.time.seconds = ('0' + showTime % 60).slice(-2);
     }
 }

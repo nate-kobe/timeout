@@ -2,7 +2,6 @@
   <div class="her-panel">
     <div class="her-panel-title">
       <span>PROFILE</span>
-      <span class="float-right"><a [routerLink]="['/edit/' + scout._id]" class="her-btn her-btn-link">edit</a></span>
     </div>
     <div class="her-panel-body"><div class="row">
       <div class="col-md-4"> 
@@ -31,7 +30,7 @@
           </div>
           <div class="col-md-4 offset-md-2">
             <h2><table>
-              <tr><td>{{ scout.time.day || null }}</td></tr>
+              <tr><td>{{ scout.time.days || 0 }}</td><td>jour(s)</td></tr>
               <tr><td>{{ scout.time.hours }}</td><td>h</td></tr>
               <tr><td>{{ scout.time.minutes }}</td><td>min</td></tr>
               <tr><td>{{ scout.time.seconds }}</td><td>s</td></tr></table></h2>
