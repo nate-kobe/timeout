@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit {
             return a.time;
           else if(!a.isPositive)
             return 0 - a.time;
-        }).reduce((a, b) => a + b, 0) + 100000;
+        }).reduce((a, b) => a + b, 0) + 186400;
         this.loadQR();
         console.log(this.scout.time);
         this.updateTime();

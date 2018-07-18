@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit {
             else if(!a.isPositive)
               return 0 - a.time;
             // return a.time;
-          }).reduce((a, b) => a + b, 0) + 100000};
+          }).reduce((a, b) => a + b, 0) + 186400};
           return scoutWTime;
         }).sort((a,b) => {return a.firstName > b.firstName ? 1 : -1;})
         console.log(scouts);
